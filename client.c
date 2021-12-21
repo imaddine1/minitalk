@@ -6,7 +6,7 @@
 /*   By: iharile <iharile@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 19:01:03 by iharile           #+#    #+#             */
-/*   Updated: 2021/12/21 19:02:20 by iharile          ###   ########.fr       */
+/*   Updated: 2021/12/21 20:16:58 by iharile          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string.h>
 #include <unistd.h>
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	unsigned long long	res;
 	int					sign;
@@ -75,7 +75,8 @@ int	main(int argc, char **argv)
 
 	if (argc == 3)
 	{
-		a = ft_atoi(argv[1]);
+		a = atoi(argv[1]);
 		convert_to_binary(argv[2], a);
 	}
+	return (0);
 }
