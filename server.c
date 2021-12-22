@@ -6,7 +6,7 @@
 /*   By: iharile <iharile@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 18:24:09 by iharile           #+#    #+#             */
-/*   Updated: 2021/12/22 10:01:51 by iharile          ###   ########.fr       */
+/*   Updated: 2021/12/22 10:59:05 by iharile          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	handler(int n)
 	int			tab[8];
 	char		wd;
 
-	j = -1;
 	num = 0;
 	if (SIGUSR1 == n)
 		tab[i++] = 1;
@@ -67,6 +66,7 @@ void	handler(int n)
 		tab[i++] = 0;
 	if (i == 8)
 	{
+		j = 0;
 		ft_swap(&tab[0]);
 		while (j <= 7)
 		{
