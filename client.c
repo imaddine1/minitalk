@@ -6,7 +6,7 @@
 /*   By: iharile <iharile@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 19:01:03 by iharile           #+#    #+#             */
-/*   Updated: 2021/12/23 10:47:12 by iharile          ###   ########.fr       */
+/*   Updated: 2021/12/23 15:30:16 by iharile          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ void	convert_to_binary(char *str, pid_t a)
 				usleep(150);
 			}
 			else
-			{
 				kill (a, SIGUSR2);
-				usleep(150);
-			}
+			usleep(150);
 			j--;
 		}
 		i++;
