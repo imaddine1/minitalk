@@ -6,7 +6,7 @@
 /*   By: iharile <iharile@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 19:01:03 by iharile           #+#    #+#             */
-/*   Updated: 2021/12/22 10:30:48 by iharile          ###   ########.fr       */
+/*   Updated: 2021/12/23 10:47:12 by iharile          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,27 @@
 #include <string.h>
 #include <unistd.h>
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
-	unsigned long long	res;
-	int					sign;
+	int	res;
+	int	sign;
+	int	i;
 
 	res = 0;
 	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '-' || *str == '+')
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (*str == '-')
+		if (str[i] == '-')
 			sign *= (-1);
-		str++;
+		i++;
 	}
-	while (*str && (*str >= '0' && *str <= '9'))
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		res = res * 10 + *str - '0';
-		if (res > 9223372036854775807 && sign == 1)
-			return (-1);
-		else if (res > 9223372036854775807 && sign == -1)
-			return (0);
-		str++;
+		res = res * 10 + str[i] - '0';
+		i++;
 	}	
 	return (res * sign);
 }
@@ -49,6 +47,7 @@ void	convert_to_binary(char *str, pid_t a)
 	int				j;
 	unsigned char	c;
 
+	i = 0;
 	while (str[i])
 	{
 		c = str[i];
@@ -78,7 +77,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 3)
 	{
-		a = atoi(argv[1]);
+		a = ft_atoi(argv[1]);
 		convert_to_binary(argv[2], a);
 	}
 	return (0);
