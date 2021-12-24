@@ -6,7 +6,7 @@
 /*   By: iharile <iharile@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 18:24:09 by iharile           #+#    #+#             */
-/*   Updated: 2021/12/22 10:59:05 by iharile          ###   ########.fr       */
+/*   Updated: 2021/12/24 15:46:32 by iharile          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,25 @@ void	handler(int n)
 	}
 }
 
+void	ft_putnbr(long n)
+{
+	int		i;
+	char	c;
+
+	i = 0;
+	if (n > 9)
+		ft_putnbr(n / 10);
+	c = (n % 10) + 48;
+	write (1, &c, 1);
+}
+
 int	main(void)
 {
 	signal(SIGUSR2, handler);
 	signal(SIGUSR1, handler);
-	printf ("server pid is: %d\n", getpid());
+	write(1, "The Server IS :", 15);
+	ft_putnbr(getpid());
+	write(1, "\n", 1);
 	while (1)
 		pause();
 	return (0);
